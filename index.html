@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sharon Medithi — Developer Portfolio</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Sharon Medithi — IT Student & Developer. JavaScript, React, Node.js. Building things that matter." />
+  <meta name="keywords" content="Sharon Medithi, developer, portfolio, JavaScript, React, Node.js" />
+  <meta name="author" content="Sharon Medithi" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sharon Medithi — Developer Portfolio" />
+  <meta property="og:description" content="IT Student crafting modern digital experiences with JavaScript, React & Node.js." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sharonmedithi0304.github.io" />
+  <meta property="og:image" content="https://github.com/sharonmedithi0304.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sharon Medithi — Developer Portfolio" />
+  <meta name="twitter:description" content="IT Student crafting modern digital experiences." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES
+    ============================================ */
+    :root {
+      --bg: #0a0a0f;
+      --bg-2: #0f0f1a;
+      --bg-card: #111118;
+      --cream: #f0ead6;
+      --white: #fafaf8;
+      --accent: #b8ff3f;
+      --accent-dim: rgba(184, 255, 63, 0.15);
+      --accent-glow: rgba(184, 255, 63, 0.4);
+      --muted: #4a4a5a;
+      --muted-2: #2a2a38;
+      --border: rgba(240, 234, 214, 0.08);
+      --font-display: 'Syne', sans-serif;
+      --font-serif: 'Instrument Serif', serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    /* ============================================
+       RESET & BASE
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--font-display);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    /* ============================================
+       CUSTOM CURSOR
+    ============================================ */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease, opacity 0.3s;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-follower {
+      width: 36px; height: 36px;
+      border: 1px solid var(--accent-glow);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.4s ease, opacity 0.3s;
+      transform: translate(-50%, -50%);
+    }
+    body:has(a:hover) .cursor { transform: translate(-50%, -50%) scale(2.5); }
+    body:has(a:hover) .cursor-follower { opacity: 0; }
+
+    /* ============================================
+       LOADER
+    ============================================ */
+    #loader {
+      position: fixed; inset: 0;
+      background: var(--bg);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+
+    .loader-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      overflow: hidden;
+    }
+    .loader-name span {
+      display: inline-block;
+      animation: loaderReveal 0.8s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    @keyframes loaderReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .loader-bar-wrap {
+      width: 200px; height: 2px;
+      background: var(--muted-2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .loader-bar {
+      height: 100%;
+      background: var(--accent);
+      animation: loaderBar 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes loaderBar { from { width: 0; } to { width: 100%; } }
+
+    /* ============================================
+       NOISE TEXTURE OVERLAY
+    ============================================ */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ============================================
+       NAVIGATION
+    ============================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 14px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+    .nav-logo .dot { color: var(--accent); }
+
+    .nav-links {
+      display: flex; gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 2px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 1.5px;
+      background: var(--cream);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+    /* ============================================
+       MOBILE NAV DRAWER
+    ============================================ */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--accent); }
+
+    /* ============================================
+       SECTION UTILITY
+    ============================================ */
+    section { position: relative; z-index: 2; }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in.delay-1 { transition-delay: 0.1s; }
+    .fade-in.delay-2 { transition-delay: 0.2s; }
+    .fade-in.delay-3 { transition-delay: 0.35s; }
+    .fade-in.delay-4 { transition-delay: 0.5s; }
+
+    /* ============================================
+       HERO SECTION
+    ============================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gradient mesh background */
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 20%, rgba(184,255,63,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(100,80,200,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 60% at 90% 80%, rgba(30,20,60,0.5) 0%, transparent 60%);
+      pointer-events: none;
+      animation: meshShift 12s ease-in-out infinite alternate;
+    }
+    @keyframes meshShift {
+      0% { background-size: 100% 100%, 100% 100%, 100% 100%; background-position: 70% 20%, 10% 80%, 90% 80%; }
+      100% { background-size: 120% 120%, 110% 110%, 90% 90%; background-position: 60% 30%, 20% 70%, 80% 90%; }
+    }
+
+    /* Floating grid lines */
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(240,234,214,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240,234,214,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.8s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px; height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .hero-name .word {
+      display: block;
+      opacity: 0;
+      transform: translateY(110%);
+      animation: wordReveal 0.9s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+    }
+    .hero-name .word:nth-child(1) { animation-delay: 2s; }
+    .hero-name .word:nth-child(2) { animation-delay: 2.15s; color: var(--accent); font-style: italic; font-family: var(--font-serif); }
+
+    @keyframes wordReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-role {
+      font-family: var(--font-mono);
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      color: var(--muted);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.8s 2.6s cubic-bezier(0.4,0,0.2,1) forwards;
+      min-height: 1.6em;
+    }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px; height: 1em;
+      background: var(--accent);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 3s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 40px var(--accent-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.15);
+      transition: left 0.4s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 60px var(--accent-glow); }
+    .btn-primary:hover::before { left: 100%; }
+
+    .btn-secondary {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: border-color 0.3s, color 0.3s, transform 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+
+    /* Hero big number decoration */
+    .hero-deco-num {
+      position: absolute;
+      right: -20px; bottom: -80px;
+      font-family: var(--font-display);
+      font-size: clamp(8rem, 20vw, 22rem);
+      font-weight: 800;
+      color: rgba(240,234,214,0.02);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 40px; left: 48px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp 0.8s 3.4s forwards;
+    }
+    .hero-scroll-hint::after {
+      content: '';
+      display: inline-block;
+      width: 1px; height: 40px;
+      background: linear-gradient(var(--muted), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================
+       MARQUEE STRIP
+    ============================================ */
+    .marquee-strip {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      background: var(--bg-2);
+      position: relative; z-index: 2;
+    }
+    .marquee-inner {
+      display: flex;
+      gap: 0;
+      animation: marquee 20s linear infinite;
+      width: max-content;
+    }
+    .marquee-item {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .marquee-item .dot { color: var(--accent); font-size: 1rem; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ============================================
+       ABOUT SECTION
+    ============================================ */
+    #about {
+      padding: 120px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-left { position: relative; }
+    .about-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .about-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+    .about-heading em {
+      font-style: italic;
+      font-family: var(--font-serif);
+      color: var(--accent);
+    }
+    .about-bio {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(240,234,214,0.7);
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    .about-bio strong { color: var(--cream); font-weight: 600; }
+
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 2px;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+    }
+    .resume-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
+
+    /* Avatar block */
+    .about-avatar-block {
+      position: relative;
+      padding-top: 40px;
+    }
+    .about-avatar-frame {
+      position: relative;
+      width: 280px;
+      height: 340px;
+      margin-bottom: 40px;
+    }
+    .about-avatar-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      filter: grayscale(20%) contrast(1.1);
+    }
+    .about-avatar-frame::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      opacity: 0.4;
+      transform: translate(8px, 8px);
+    }
+    .about-avatar-frame::after {
+      content: 'SM';
+      position: absolute;
+      top: -20px; right: -30px;
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 800;
+      color: rgba(184,255,63,0.08);
+      letter-spacing: -0.05em;
+    }
+
+    /* Skills grid */
+    .skills-header {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      padding: 8px 16px;
+      background: var(--muted-2);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      border-radius: 2px;
+      transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+      cursor: default;
+    }
+    .skill-pill:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Big vertical text decoration */
+    .about-vert-text {
+      position: absolute;
+      right: -20px; top: 0;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(240,234,214,0.06);
+      writing-mode: vertical-rl;
+      font-weight: 800;
+      pointer-events: none;
+    }
+
+    /* ============================================
+       PROJECTS SECTION
+    ============================================ */
+    #projects {
+      padding: 120px 48px;
+      background: var(--bg-2);
+      position: relative;
+      overflow: hidden;
+    }
+    #projects::before {
+      content: '03';
+      position: absolute;
+      right: 40px; top: 60px;
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 16vw, 18rem);
+      font-weight: 800;
+      color: rgba(240,234,214,0.02);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .projects-inner { max-width: 1400px; margin: 0 auto; }
+    .projects-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 72px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .projects-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--white);
+    }
+    .projects-heading em {
+      font-style: italic;
+      font-family: var(--font-serif);
+      color: var(--accent);
+    }
+    .projects-count {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 0.4s,
+                  border-color 0.3s;
+      cursor: default;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .project-card:hover {
+      transform: translateY(-10px) rotateX(2deg);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
+      border-color: rgba(184,255,63,0.2);
+    }
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .card-num {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .card-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(240,234,214,0.55);
+      margin-bottom: 28px;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: 2px;
+      border: 1px solid rgba(184,255,63,0.2);
+    }
+    .card-links {
+      display: flex;
+      gap: 16px;
+    }
+    .card-link {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s;
+    }
+    .card-link:hover { color: var(--accent); }
+    .card-link svg { width: 12px; height: 12px; }
+
+    .card-coming-soon {
+      position: absolute;
+      bottom: 40px; right: 40px;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.5;
+    }
+
+    /* ============================================
+       GITHUB STATS SECTION
+    ============================================ */
+    #github {
+      padding: 120px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .github-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .github-left { }
+    .github-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .github-heading em {
+      font-style: italic;
+      font-family: var(--font-serif);
+      color: var(--accent);
+    }
+    .github-desc {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(240,234,214,0.55);
+      margin-bottom: 32px;
+    }
+    .github-profile-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent-glow);
+      padding-bottom: 2px;
+      transition: gap 0.3s;
+    }
+    .github-profile-link:hover { gap: 16px; }
+
+    .github-stats-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .github-stats-grid img {
+      border-radius: 4px;
+      width: 100%;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .github-stats-grid img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    /* ============================================
+       CONTACT SECTION
+    ============================================ */
+    #contact {
+      padding: 120px 48px;
+      background: var(--bg-2);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    #contact::before {
+      content: 'HELLO';
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 20vw, 20rem);
+      font-weight: 800;
+      color: rgba(240,234,214,0.015);
+      line-height: 1;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .contact-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .contact-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .contact-label::before, .contact-label::after {
+      content: '';
+      display: inline-block;
+      width: 32px; height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+    .contact-heading {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+    .contact-heading em {
+      font-style: italic;
+      font-family: var(--font-serif);
+      color: var(--accent);
+    }
+    .contact-sub {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(240,234,214,0.55);
+      max-width: 520px;
+      margin: 0 auto 56px;
+    }
+
+    .contact-cta-email {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--white);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 4px;
+      transition: color 0.3s, border-color 0.3s;
+      margin-bottom: 60px;
+    }
+    .contact-cta-email:hover { color: var(--accent); }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s, transform 0.3s;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .social-link:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-4px); }
+    .social-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: relative; z-index: 2;
+    }
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-copy a { color: var(--accent); }
+    .footer-made {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-made .heart { color: var(--accent); }
+
+    /* ============================================
+       SCROLL PROGRESS
+    ============================================ */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: var(--accent);
+      z-index: 9997;
+      transition: width 0.1s;
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+
+      #hero { padding: 100px 24px 80px; }
+      .hero-scroll-hint { left: 24px; }
+      .hero-deco-num { font-size: 8rem; right: 10px; }
+
+      #about { padding: 80px 24px; }
+      .about-layout { grid-template-columns: 1fr; gap: 48px; }
+      .about-avatar-frame { width: 200px; height: 250px; }
+
+      #projects { padding: 80px 24px; }
+      .projects-grid { grid-template-columns: 1fr; }
+
+      #github { padding: 80px 24px; }
+      .github-layout { grid-template-columns: 1fr; gap: 48px; }
+
+      #contact { padding: 80px 24px; }
+
+      footer { padding: 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-name { font-size: clamp(3rem, 14vw, 5rem); }
+      .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 0.7rem; }
+      .project-card { padding: 28px; }
+      .about-heading, .projects-heading, .github-heading { font-size: 2.2rem; }
+    }
+
+    /* ============================================
+       TILT EFFECT (JS-driven, CSS vars)
+    ============================================ */
+    .project-card {
+      transform-style: preserve-3d;
+      --tilt-x: 0deg;
+      --tilt-y: 0deg;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Reading progress"></div>
+
+<!-- ============================================
+     LOADER
+============================================ -->
+<div id="loader" role="status" aria-label="Loading portfolio">
+  <div class="loader-name">
+    <span style="animation-delay:0.2s">Sharon</span>&nbsp;
+    <span style="animation-delay:0.4s">Medithi</span>
+  </div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- ============================================
+     NAVIGATION
+============================================ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#hero" class="nav-logo" aria-label="Sharon Medithi home">SM<span class="dot">.</span></a>
+  <ul class="nav-links" role="list">
+    <li><a href="#about" data-section="about">About</a></li>
+    <li><a href="#projects" data-section="projects">Projects</a></li>
+    <li><a href="#contact" data-section="contact">Contact</a></li>
+  </ul>
+  <a href="mailto:sharonmedithi23@email.com" class="nav-cta" aria-label="Let's talk with Sharon">Let's Talk</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</nav>
+
+<!-- ============================================
+     HERO
+============================================ -->
+<section id="hero" aria-label="Hero introduction">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow" aria-label="Location and status">Hyderabad, IN &mdash; Available for opportunities</p>
+    <h1 class="hero-name" aria-label="Sharon Medithi">
+      <span class="word">Sharon</span>
+      <span class="word">Medithi</span>
+    </h1>
+    <p class="hero-role" id="typewriter" aria-live="polite">
+      <span id="typeText"></span><span class="typewriter-cursor" aria-hidden="true"></span>
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary" aria-label="View my projects">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        View Projects
+      </a>
+      <a href="mailto:sharonmedithi23@email.com" class="btn-secondary" aria-label="Contact Sharon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Say Hello
+      </a>
+    </div>
+    <div class="hero-deco-num" aria-hidden="true">01</div>
+  </div>
+  <p class="hero-scroll-hint" aria-hidden="true">Scroll</p>
+</section>
+
+<!-- ============================================
+     MARQUEE
+============================================ -->
+<div class="marquee-strip" aria-hidden="true" role="presentation">
+  <div class="marquee-inner">
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-item">JavaScript <span class="dot">✦</span></div>
+    <div class="marquee-item">React <span class="dot">✦</span></div>
+    <div class="marquee-item">Node.js <span class="dot">✦</span></div>
+    <div class="marquee-item">Git <span class="dot">✦</span></div>
+    <div class="marquee-item">IT Student <span class="dot">✦</span></div>
+    <div class="marquee-item">Developer <span class="dot">✦</span></div>
+    <div class="marquee-item">Problem Solver <span class="dot">✦</span></div>
+    <div class="marquee-item">JavaScript <span class="dot">✦</span></div>
+    <div class="marquee-item">React <span class="dot">✦</span></div>
+    <div class="marquee-item">Node.js <span class="dot">✦</span></div>
+    <div class="marquee-item">Git <span class="dot">✦</span></div>
+    <div class="marquee-item">IT Student <span class="dot">✦</span></div>
+    <div class="marquee-item">Developer <span class="dot">✦</span></div>
+    <div class="marquee-item">Problem Solver <span class="dot">✦</span></div>
+  </div>
+</div>
+
+<!-- ============================================
+     ABOUT
+============================================ -->
+<section id="about" aria-labelledby="about-heading">
+  <div style="max-width:1400px;margin:0 auto;padding:120px 48px;">
+    <div class="about-layout">
+      <div class="about-left fade-in">
+        <p class="about-section-label">// 02 — About Me</p>
+        <h2 class="about-heading" id="about-heading">Building the<br><em>future</em>,<br>one commit<br>at a time.</h2>
+        <p class="about-bio">
+          I'm <strong>Sharon Medithi</strong>, an IT student based in Hyderabad with a relentless passion for crafting digital experiences that feel as good as they look. I believe code is a creative medium — every function a brushstroke, every interface a canvas.
+        </p>
+        <p class="about-bio">
+          Currently diving deep into <strong>full-stack development</strong>, I bridge the gap between front-end elegance and back-end robustness. When I'm not pushing commits, I'm reverse-engineering the web to understand how extraordinary things are built.
+        </p>
+
+      </div>
+      <div class="about-avatar-block fade-in delay-2">
+        <div class="about-vert-text" aria-hidden="true">SHARON MEDITHI 2026</div>
+        <p class="skills-header">// Core Stack</p>
+        <div class="skills-grid" role="list" aria-label="Technical skills">
+          <span class="skill-pill" role="listitem">JavaScript</span>
+          <span class="skill-pill" role="listitem">React</span>
+          <span class="skill-pill" role="listitem">Node.js</span>
+          <span class="skill-pill" role="listitem">Git & GitHub</span>
+          <span class="skill-pill" role="listitem">HTML5</span>
+          <span class="skill-pill" role="listitem">CSS3</span>
+          <span class="skill-pill" role="listitem">REST APIs</span>
+          <span class="skill-pill" role="listitem">npm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PROJECTS
+============================================ -->
+<section id="projects" aria-labelledby="projects-heading">
+  <div class="projects-inner">
+    <div class="projects-header">
+      <div class="fade-in">
+        <p class="section-num">// 03 — Projects</p>
+        <h2 class="projects-heading" id="projects-heading">Selected<br><em>Works</em></h2>
+      </div>
+      <p class="projects-count fade-in delay-2">3 Projects ✦</p>
+    </div>
+    <div class="projects-grid" role="list">
+
+      <!-- Project Card 1 — Focus OS -->
+      <article class="project-card fade-in" role="listitem" aria-label="Focus OS project">
+        <p class="card-num">// P-001</p>
+        <h3 class="card-title">Focus OS</h3>
+        <p class="card-desc">A productivity-focused web app to help users stay focused, manage time, and reduce distractions. Built around Pomodoro-style timer logic, task tracking, and clean UI design — because discipline deserves a great interface.</p>
+        <div class="card-tags" aria-label="Technologies used">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Pomodoro</span>
+          <span class="tag">State Management</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/focus-os" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Focus OS on GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://sharonmedithi0304.github.io/focus-os/" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Focus OS live demo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+        </div>
+      </article>
+
+      <!-- Project Card 2 — Split It -->
+      <article class="project-card fade-in delay-1" role="listitem" aria-label="Split It project">
+        <p class="card-num">// P-002</p>
+        <h3 class="card-title">Split It</h3>
+        <p class="card-desc">A practical expense-splitting web app that calculates shared costs among groups in real time. Solves a universal problem with sharp JavaScript logic, dynamic DOM updates, and an intuitive interface that just works.</p>
+        <div class="card-tags" aria-label="Technologies used">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">DOM Manipulation</span>
+          <span class="tag">Event Handling</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/split-it" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Split It on GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://sharonmedithi0304.github.io/split-it/" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Split It live demo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+        </div>
+      </article>
+
+      <!-- Project Card 3 — Gravity Flux -->
+      <article class="project-card fade-in delay-2" role="listitem" aria-label="Gravity Flux project">
+        <p class="card-num">// P-003</p>
+        <h3 class="card-title">Gravity Flux</h3>
+        <p class="card-desc">An interactive browser simulation of gravity-inspired motion and physics-based animations. Built to explore the edge of what vanilla JS can do visually — smooth, dynamic, and mesmerizing in real time.</p>
+        <div class="card-tags" aria-label="Technologies used">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Physics Animation</span>
+          <span class="tag">DOM</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/Gravity-Flux" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Gravity Flux on GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://sharonmedithi0304.github.io/Gravity-Flux/" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Gravity Flux live demo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================
+     CONTACT
+============================================ -->
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="contact-inner">
+    <p class="contact-label fade-in">// 04 — Let's Connect</p>
+    <h2 class="contact-heading fade-in delay-1" id="contact-heading">Let's build<br>something<br><em>great.</em></h2>
+    <p class="contact-sub fade-in delay-2">
+      Have an opportunity, a project, or just want to say hi? My inbox is always open. Let's turn ideas into reality together.
+    </p>
+    <a
+      href="mailto:sharonmedithi23@email.com"
+      class="contact-cta-email fade-in delay-3"
+      aria-label="Send email to Sharon Medithi"
+    >
+      sharonmedithi23@email.com
+    </a>
+
+    <div class="social-links fade-in delay-4" role="list" aria-label="Social media links">
+      <a
+        href="https://github.com/sharonmedithi0304"
+        class="social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label="GitHub — sharonmedithi0304"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a
+        href="https://www.linkedin.com/in/sharonmedithi"
+        class="social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label="LinkedIn — Sharon Medithi"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a
+        href="mailto:sharonmedithi23@email.com"
+        class="social-link"
+        role="listitem"
+        aria-label="Email Sharon Medithi"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+============================================ -->
+<footer role="contentinfo">
+  <p class="footer-copy">
+    &copy; 2026 <a href="#hero">Sharon Medithi</a>. All rights reserved.
+  </p>
+  <p class="footer-made">
+    Built with <span class="heart" aria-label="love">♥</span> &amp; pure HTML/CSS/JS
+  </p>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT
+============================================ -->
+<script>
+  // ── Loader ──────────────────────────────────
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 1800);
+  });
+
+  // ── Custom Cursor ────────────────────────────
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursorFollower');
+  let mx = 0, my = 0, fx = 0, fy = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+  });
+
+  function followCursor() {
+    fx += (mx - fx) * 0.1;
+    fy += (my - fy) * 0.1;
+    follower.style.transform = `translate(${fx}px, ${fy}px) translate(-50%, -50%)`;
+    requestAnimationFrame(followCursor);
+  }
+  followCursor();
+
+  // Hide cursor on mobile
+  if ('ontouchstart' in window) {
+    cursor.style.display = 'none';
+    follower.style.display = 'none';
+    document.body.style.cursor = 'auto';
+  }
+
+  // ── Scroll Progress Bar ──────────────────────
+  const progressBar = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = scrolled + '%';
+  }, { passive: true });
+
+  // ── Navbar scroll behavior ───────────────────
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── Active nav highlight ─────────────────────
+  const navLinks = document.querySelectorAll('.nav-links a[data-section]');
+  const sections = document.querySelectorAll('section[id]');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[data-section="${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => sectionObserver.observe(s));
+
+  // ── Hamburger Menu ───────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ── Typewriter Effect ────────────────────────
+  const roles = [
+    'IT Student & Developer',
+    'JavaScript Enthusiast',
+    'React Builder',
+    'Node.js Explorer',
+    'Full-Stack Learner',
+    'Open Source Contributor',
+  ];
+  let roleIndex = 0, charIndex = 0, isDeleting = false;
+  const typeEl = document.getElementById('typeText');
+
+  function type() {
+    const current = roles[roleIndex];
+    if (isDeleting) {
+      typeEl.textContent = current.substring(0, charIndex--);
+    } else {
+      typeEl.textContent = current.substring(0, charIndex++);
+    }
+
+    let speed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && charIndex > current.length) {
+      isDeleting = true;
+      speed = 1800; // pause at end
+    } else if (isDeleting && charIndex < 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      speed = 400;
+    }
+    setTimeout(type, speed);
+  }
+  // Start typewriter after hero animation settles
+  setTimeout(type, 2800);
+
+  // ── Scroll-triggered Fade-in ─────────────────
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  fadeEls.forEach(el => fadeObserver.observe(el));
+
+  // ── Card Tilt Effect ─────────────────────────
+  const cards = document.querySelectorAll('.project-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const rotX = ((y - cy) / cy) * -6;
+      const rotY = ((x - cx) / cx) * 6;
+      card.style.transform = `translateY(-10px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  // ── Keyboard Navigation ──────────────────────
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+</body>
+</html>
+
