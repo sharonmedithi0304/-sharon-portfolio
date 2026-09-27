@@ -32,7 +32,6 @@ Interactive browser-based visualization of data structures and algorithms.
 
 I use **C++** and **java** to strengthen my foundations in data structures, algorithms, OOP, complexity, and problem solving.
 
-**[LeetCode →](https://leetcode.com/u/sha_0304/)**
 
 ## Tech Stack
 
@@ -52,5 +51,4 @@ Built with **HTML, CSS, and JavaScript** — no framework or build step required
 
 - [GitHub](https://github.com/sharonmedithi0304)
 - [LinkedIn](https://www.linkedin.com/in/sharonmedithi/)
-- [LeetCode](https://leetcode.com/u/sha_0304/)
 - [Email](mailto:sharonmedithi23@email.com)
