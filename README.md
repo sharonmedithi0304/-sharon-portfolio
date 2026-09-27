@@ -30,7 +30,7 @@ Interactive browser-based visualization of data structures and algorithms.
 
 ## Problem Solving
 
-I use **C++** to strengthen my foundations in data structures, algorithms, OOP, complexity, and problem solving.
+I use **C++** and **java** to strengthen my foundations in data structures, algorithms, OOP, complexity, and problem solving.
 
 **[LeetCode →](https://leetcode.com/u/sha_0304/)**
 
