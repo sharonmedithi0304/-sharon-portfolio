@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sharon Medithi — Software Developer</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Sharon Medithi — Software Developer building with C++, data structures & algorithms, full-stack development, and AI/ML. Hackathon builder, LeetCode problem solver." />
+  <meta name="keywords" content="Sharon Medithi, software developer, C++, data structures, algorithms, problem solving, full-stack development, hackathons, AI/ML" />
+  <meta name="author" content="Sharon Medithi" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sharon Medithi — Software Developer" />
+  <meta property="og:description" content="Building software, solving problems, and competing in hackathons. C++, DSA, full-stack development, and AI/ML exploration." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sharonmedithi0304.github.io" />
+  <meta property="og:image" content="https://github.com/sharonmedithi0304.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sharon Medithi — Software Developer" />
+  <meta name="twitter:description" content="Building software, solving problems, and competing in hackathons." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Reading progress"></div>
+
+<!-- ============================================
+     LOADER
+============================================ -->
+<div id="loader" role="status" aria-label="Loading portfolio">
+  <div class="loader-name">
+    <span style="animation-delay:0.2s">Sharon</span>&nbsp;
+    <span style="animation-delay:0.4s">Medithi</span>
+  </div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- ============================================
+     NAVIGATION
+============================================ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#hero" class="nav-logo" aria-label="Sharon Medithi home">SM<span class="dot">.</span></a>
+  <ul class="nav-links" role="list">
+    <li><a href="#about" data-section="about">About</a></li>
+    <li><a href="#builds" data-section="builds">Builds</a></li>
+    <li><a href="#hackathons" data-section="hackathons">Hackathons</a></li>
+    <li><a href="#problem-solving" data-section="problem-solving">Problem Solving</a></li>
+    <li><a href="#contact" data-section="contact">Contact</a></li>
+  </ul>
+  <a href="mailto:sharonmedithi23@email.com" class="nav-cta" aria-label="Let's talk with Sharon">Let's Talk</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#builds" class="mobile-link">Builds</a>
+  <a href="#hackathons" class="mobile-link">Hackathons</a>
+  <a href="#problem-solving" class="mobile-link">Problem Solving</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</nav>
+
+<!-- ============================================
+     HERO
+============================================ -->
+<section id="hero" aria-label="Hero introduction">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Hyderabad, IN &mdash; Building, solving, shipping</p>
+    <h1 class="hero-name" aria-label="Sharon Medithi">
+      <span class="word">Sharon</span>
+      <span class="word">Medithi</span>
+    </h1>
+    <p class="hero-role" id="typewriter" aria-live="polite">
+      <span id="typeText"></span><span class="typewriter-cursor" aria-hidden="true"></span>
+    </p>
+    <div class="hero-actions">
+      <a href="#builds" class="btn-primary" aria-label="View my selected builds">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        View Selected Builds
+      </a>
+      <a href="mailto:sharonmedithi23@email.com" class="btn-secondary" aria-label="Contact Sharon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Say Hello
+      </a>
+    </div>
+  </div>
+  <p class="hero-scroll-hint" aria-hidden="true">Scroll</p>
+</section>
+
+<!-- ============================================
+     MARQUEE
+============================================ -->
+<div class="marquee-strip" aria-hidden="true" role="presentation">
+  <div class="marquee-inner">
+    <div class="marquee-item">C++ <span class="dot">✦</span></div>
+    <div class="marquee-item">Data Structures <span class="dot">✦</span></div>
+    <div class="marquee-item">Algorithms <span class="dot">✦</span></div>
+    <div class="marquee-item">Problem Solving <span class="dot">✦</span></div>
+    <div class="marquee-item">Software Development <span class="dot">✦</span></div>
+    <div class="marquee-item">Hackathons <span class="dot">✦</span></div>
+    <div class="marquee-item">Git & GitHub <span class="dot">✦</span></div>
+    <div class="marquee-item">AI/ML Exploration <span class="dot">✦</span></div>
+    <!-- duplicate for seamless loop -->
+    <div class="marquee-item">C++ <span class="dot">✦</span></div>
+    <div class="marquee-item">Data Structures <span class="dot">✦</span></div>
+    <div class="marquee-item">Algorithms <span class="dot">✦</span></div>
+    <div class="marquee-item">Problem Solving <span class="dot">✦</span></div>
+    <div class="marquee-item">Software Development <span class="dot">✦</span></div>
+    <div class="marquee-item">Hackathons <span class="dot">✦</span></div>
+    <div class="marquee-item">Git & GitHub <span class="dot">✦</span></div>
+    <div class="marquee-item">AI/ML Exploration <span class="dot">✦</span></div>
+  </div>
+</div>
+
+<!-- ============================================
+     ABOUT
+============================================ -->
+<section id="about" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-left fade-in">
+        <p class="section-label">About</p>
+        <h2 class="about-heading" id="about-heading">I build software to understand problems <span class="accent">deeply</span>.</h2>
+        <p class="about-bio">
+          I build software to understand problems deeply — from algorithms and data structures to full-stack systems and AI/ML experiments. I learn by building, competing, and iterating: turning ideas into working prototypes and improving them through real constraints.
+        </p>
+        <p class="about-bio">
+          My focus is on strong fundamentals, practical engineering, and building things that make me think harder.
+        </p>
+      </div>
+      <div class="about-avatar-block fade-in delay-2">
+        <p class="skills-header">Core</p>
+        <div class="skills-grid" role="list" aria-label="Technical skills">
+          <span class="skill-pill" role="listitem">C++</span>
+          <span class="skill-pill" role="listitem">Data Structures</span>
+          <span class="skill-pill" role="listitem">Algorithms</span>
+          <span class="skill-pill" role="listitem">OOP</span>
+          <span class="skill-pill" role="listitem">JavaScript</span>
+          <span class="skill-pill" role="listitem">Python</span>
+          <span class="skill-pill" role="listitem">React</span>
+          <span class="skill-pill" role="listitem">Node.js</span>
+          <span class="skill-pill" role="listitem">FastAPI</span>
+          <span class="skill-pill" role="listitem">Git & GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SELECTED BUILDS
+============================================ -->
+<section id="builds" aria-labelledby="builds-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="fade-in">
+        <p class="section-label">Selected Builds</p>
+        <h2 class="section-heading" id="builds-heading">Things I've <span class="accent">shipped</span></h2>
+        <p class="section-intro">Independent projects — built to explore an idea, sharpen a skill, or solve a problem I ran into myself.</p>
+      </div>
+    </div>
+    <div class="builds-grid" role="list">
+
+      <article class="build-card fade-in" role="listitem" aria-label="ForgeSight project">
+        <p class="build-tag">Industrial Decision Intelligence</p>
+        <h3 class="build-title">ForgeSight</h3>
+        <p class="build-desc">A software-only industrial decision-support system that traces quality signals through defect patterns, process context, bottlenecks, and economic impact to support evidence-backed investigation.</p>
+        <div class="build-tags" aria-label="Technologies used">
+          <span class="tag">Decision Support</span>
+          <span class="tag">Industrial Data</span>
+          <span class="tag">Simulation</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/FORGE-SIGHT" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View ForgeSight on GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="build-card fade-in delay-1" role="listitem" aria-label="RaftLab project">
+        <p class="build-tag">Systems / Backend</p>
+        <h3 class="build-title">RaftLab</h3>
+        <p class="build-desc">A systems-focused implementation exploring distributed systems concepts through consensus, replication, and fault-tolerant coordination.</p>
+        <div class="build-tags" aria-label="Technologies used">
+          <span class="tag">Distributed Systems</span>
+          <span class="tag">Backend</span>
+          <span class="tag">Systems</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/raftlab" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View RaftLab on GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="build-card fade-in delay-2" role="listitem" aria-label="DSA Visualizer project">
+        <p class="build-tag">DSA</p>
+        <h3 class="build-title">DSA Visualizer</h3>
+        <p class="build-desc">An interactive browser-based tool for visualizing data structures and algorithms step by step, making core concepts easier to inspect and understand.</p>
+        <div class="build-tags" aria-label="Technologies used">
+          <span class="tag">JavaScript</span>
+          <span class="tag">Algorithms</span>
+          <span class="tag">Visualization</span>
+        </div>
+        <div class="card-links">
+          <a href="https://sharonmedithi0304.github.io/dsaviz/" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View DSA Visualizer live demo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     HACKATHONS & CHALLENGES
+============================================ -->
+<section id="hackathons" aria-labelledby="hackathons-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="fade-in">
+        <p class="section-label">Hackathons & Challenges</p>
+        <h2 class="section-heading" id="hackathons-heading">Building under a <span class="accent">clock</span></h2>
+        <p class="section-intro">Time-boxed events where I built with a team, against a deadline, on a problem I didn't pick myself.</p>
+      </div>
+    </div>
+    <div class="hackathons-grid" role="list">
+
+      <article class="hack-card fade-in" role="listitem" aria-label="CUBE 2026">
+        <div class="hack-meta-row">
+          <span class="hack-chip">Product Workflow</span>
+          <span class="hack-chip">Hackathon</span>
+          <span class="hack-chip">Software Prototype</span>
+        </div>
+        <h3 class="hack-title">CUBE 2026</h3>
+        <p class="hack-desc">Built a Receiving Manager prototype for the CUBE 2026 challenge, translating the operational brief into a working software workflow under event constraints.</p>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/cube26-rcv-0286-sharonmedithi0304" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View CUBE 2026 repository on GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="hack-card fade-in delay-1" role="listitem" aria-label="NeuraX 3.0">
+        <div class="hack-meta-row">
+          <span class="hack-chip">AI in Industry</span>
+          <span class="hack-chip">Computer Vision</span>
+          <span class="hack-chip">Hackathon</span>
+        </div>
+        <h3 class="hack-title">NeuraX 3.0</h3>
+        <p class="hack-desc">Built a software-only visual inspection and defect root-cause investigation prototype for industrial quality analysis under hackathon constraints.</p>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/NeuraX" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View NeuraX 3.0 repository on GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="hack-card fade-in delay-2" role="listitem" aria-label="Smart India Hackathon">
+        <div class="hack-meta-row">
+          <span class="hack-chip">AI & Verification</span>
+          <span class="hack-chip">Hackathon Prototype</span>
+        </div>
+        <h3 class="hack-title">AuthentiX</h3>
+        <p class="hack-desc">An AI-based document and identity screening prototype built for a Smart India Hackathon-style challenge, exploring document verification, tampering detection, and automated screening workflows.</p>
+        <div class="card-links">
+          <a href="https://authenti-x-vault.lovable.app/" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View AuthentiX live prototype">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Prototype
+          </a>
+          <a href="https://drive.google.com/file/d/1thoKCx8NakIEDi9mdUERC34_t-aS7Wun/view?usp=sharing" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View AuthentiX presentation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Presentation
+          </a>
+        </div>
+      </article>
+
+      <article class="hack-card fade-in delay-3" role="listitem" aria-label="Cyberfest CDC">
+        <div class="hack-meta-row">
+          <span class="hack-chip">FinTech</span>
+          <span class="hack-chip">App Development</span>
+          <span class="hack-chip">Medium</span>
+        </div>
+        <h3 class="hack-title">Cyberfest CDC — Privacy-Aware Digital Wallet for Students</h3>
+        <p class="hack-desc">A privacy-aware digital wallet concept focused on giving students more control over payment-related information across multiple payment apps and services.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PROBLEM SOLVING
+============================================ -->
+<section id="problem-solving" aria-labelledby="ps-heading">
+  <div class="container">
+    <div class="ps-layout">
+      <div class="fade-in">
+        <p class="section-label">Problem Solving</p>
+        <h2 class="section-heading" id="ps-heading">Built on <span class="accent">fundamentals.</span></h2>
+        <p class="ps-desc">I use C++ and data structures to strengthen the way I think through problems — from algorithmic trade-offs and complexity to clean, structured implementations.</p>
+        <div class="ps-list" role="list" aria-label="Problem solving focus areas">
+          <span class="skill-pill" role="listitem">C++</span>
+          <span class="skill-pill" role="listitem">Data Structures</span>
+          <span class="skill-pill" role="listitem">Algorithms</span>
+          <span class="skill-pill" role="listitem">OOP</span>
+          <span class="skill-pill" role="listitem">Problem Solving</span>
+        </div>
+      </div>
+      <div class="fade-in delay-2">
+        <div class="leetcode-card">
+          <h3>LeetCode</h3>
+          <p>Working through algorithmic problems in C++ to strengthen data structures, patterns, complexity analysis, and problem-solving fundamentals.</p>
+          <a href="https://leetcode.com/u/sha_0304/" class="btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="View Sharon's LeetCode profile">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View LeetCode →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TECH STACK
+============================================ -->
+<section id="tech" aria-labelledby="tech-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="fade-in">
+        <p class="section-label">Tech Stack</p>
+        <h2 class="section-heading" id="tech-heading">What I <span class="accent">build with</span></h2>
+      </div>
+    </div>
+    <div class="tech-grid">
+      <div class="fade-in">
+        <p class="tech-group-label">Languages</p>
+        <div class="tech-pills">
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">Python</span>
+        </div>
+      </div>
+      <div class="fade-in delay-1">
+        <p class="tech-group-label">Core</p>
+        <div class="tech-pills">
+          <span class="skill-pill">Data Structures</span>
+          <span class="skill-pill">Algorithms</span>
+          <span class="skill-pill">OOP</span>
+          <span class="skill-pill">Problem Solving</span>
+        </div>
+      </div>
+      <div class="fade-in delay-2">
+        <p class="tech-group-label">Frontend</p>
+        <div class="tech-pills">
+          <span class="skill-pill">HTML</span>
+          <span class="skill-pill">CSS</span>
+          <span class="skill-pill">React</span>
+        </div>
+      </div>
+      <div class="fade-in delay-3">
+        <p class="tech-group-label">Backend</p>
+        <div class="tech-pills">
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">FastAPI</span>
+          <span class="skill-pill">REST APIs</span>
+        </div>
+      </div>
+      <div class="fade-in delay-4">
+        <p class="tech-group-label">Tools</p>
+        <div class="tech-pills">
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">GitHub</span>
+          <span class="skill-pill">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     EARLIER BUILDS
+============================================ -->
+<section id="earlier" aria-labelledby="earlier-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="fade-in">
+        <p class="section-label">Earlier Builds</p>
+        <h2 class="section-heading" id="earlier-heading">Where it <span class="accent">started</span></h2>
+        <p class="section-intro">Earlier experiments that shaped how I build today.</p>
+      </div>
+    </div>
+    <div class="earlier-grid" role="list">
+
+      <article class="earlier-card fade-in" role="listitem" aria-label="Focus OS project">
+        <h3 class="earlier-title">Focus OS</h3>
+        <p class="earlier-desc">A productivity web app built around Pomodoro-style timer logic and task tracking.</p>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/focus-os" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Focus OS on GitHub">GitHub</a>
+          <a href="https://sharonmedithi0304.github.io/focus-os/" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Focus OS live demo">Live Demo</a>
+        </div>
+      </article>
+
+      <article class="earlier-card fade-in delay-1" role="listitem" aria-label="Split It project">
+        <h3 class="earlier-title">Split It</h3>
+        <p class="earlier-desc">An expense-splitting app that calculates shared costs among groups in real time.</p>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/split-it" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Split It on GitHub">GitHub</a>
+          <a href="https://sharonmedithi0304.github.io/split-it/" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Split It live demo">Live Demo</a>
+        </div>
+      </article>
+
+      <article class="earlier-card fade-in delay-2" role="listitem" aria-label="Gravity Flux project">
+        <h3 class="earlier-title">Gravity Flux</h3>
+        <p class="earlier-desc">A browser simulation of gravity-inspired motion and physics-based animation in vanilla JS.</p>
+        <div class="card-links">
+          <a href="https://github.com/sharonmedithi0304/Gravity-Flux" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Gravity Flux on GitHub">GitHub</a>
+          <a href="https://sharonmedithi0304.github.io/Gravity-Flux/" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="View Gravity Flux live demo">Live Demo</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     BUILD IN PUBLIC / GITHUB
+============================================ -->
+<section id="github" aria-labelledby="github-heading">
+  <div class="container">
+    <div class="github-layout">
+      <div class="fade-in">
+        <p class="section-label">Build In Public</p>
+        <h2 class="section-heading" id="github-heading">Learn by <span class="accent">shipping</span></h2>
+        <p class="github-desc">Most of what I build lives on GitHub — projects, experiments, hackathon work, and iterations. I prefer shipping something real, learning from it, and improving it over waiting for perfect.</p>
+        <a href="https://github.com/sharonmedithi0304" class="github-profile-link btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Visit Sharon's GitHub profile">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View GitHub Profile
+        </a>
+      </div>
+      <div class="fade-in delay-2">
+        <div class="github-panel">
+          <div class="github-panel-row"><span>Profile</span><a href="https://github.com/sharonmedithi0304" target="_blank" rel="noopener noreferrer">github.com/sharonmedithi0304</a></div>
+          <div class="github-panel-row"><span>Projects</span><span>Selected builds</span></div>
+          <div class="github-panel-row"><span>Hackathons</span><span>CUBE · NeuraX · SIH</span></div>
+          <div class="github-panel-row"><span>Experiments</span><span>Systems · DSA · Full-stack</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CONTACT
+============================================ -->
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="contact-inner">
+    <p class="contact-label fade-in">Let's Connect</p>
+    <h2 class="contact-heading fade-in delay-1" id="contact-heading">Have something<br>worth <span class="accent">building?</span></h2>
+    <p class="contact-sub fade-in delay-2">
+      I'm open to interesting projects, hackathons, collaborations, and software engineering opportunities.
+    </p>
+    <a
+      href="mailto:sharonmedithi23@email.com"
+      class="contact-cta-email fade-in delay-3"
+      aria-label="Send email to Sharon Medithi"
+    >
+      sharonmedithi23@email.com
+    </a>
+
+    <div class="social-links fade-in delay-4" role="list" aria-label="Social and profile links">
+      <a
+        href="https://github.com/sharonmedithi0304"
+        class="social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label="GitHub — sharonmedithi0304"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a
+        href="https://www.linkedin.com/in/sharonmedithi/"
+        class="social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label="LinkedIn — Sharon Medithi"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a
+        href="https://leetcode.com/u/sha_0304/"
+        class="social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label="LeetCode — sha_0304"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        LeetCode
+      </a>
+      <a
+        href="mailto:sharonmedithi23@email.com"
+        class="social-link"
+        role="listitem"
+        aria-label="Email Sharon Medithi"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+============================================ -->
+<footer role="contentinfo">
+  <p class="footer-copy">
+    &copy; 2026 <a href="#hero">Sharon Medithi</a>. All rights reserved.
+  </p>
+  <p class="footer-made">
+    Built with <span class="heart" aria-label="love">♥</span> &amp; pure HTML/CSS/JS
+  </p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
